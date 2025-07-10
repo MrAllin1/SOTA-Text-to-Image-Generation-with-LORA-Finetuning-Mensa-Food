@@ -1,0 +1,73 @@
+cpu-bind=MASK - dlcgpu11, task  0  0 [702167]: mask 0x3c0000003c0000 set
+/var/spool/slurm/job19425405/slurm_script: line 11: module: command not found
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+Traceback (most recent call last):
+  File "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/train_text_to_image_lora.py", line 213, in <module>
+    main()
+  File "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/train_text_to_image_lora.py", line 145, in main
+    noise_pred = unet(noisy_latents, timesteps, encoder_hidden_states).sample
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/utils/operations.py", line 818, in forward
+    return model_forward(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/utils/operations.py", line 806, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/peft/peft_model.py", line 878, in forward
+    return self.get_base_model()(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/unets/unet_2d_condition.py", line 1279, in forward
+    sample = upsample_block(
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/unets/unet_2d_blocks.py", line 2458, in forward
+    hidden_states = attn(
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py", line 427, in forward
+    hidden_states = block(
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/attention.py", line 578, in forward
+    ff_output = self.ff(norm_hidden_states)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/attention.py", line 1250, in forward
+    hidden_states = module(hidden_states)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/activations.py", line 117, in forward
+    hidden_states = self.proj(hidden_states)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 10.57 GiB of which 13.12 MiB is free. Including non-PyTorch memory, this process has 10.55 GiB memory in use. Of the allocated memory 10.32 GiB is allocated by PyTorch, and 31.14 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1199, in launch_command
+    simple_launcher(args)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/launch.py", line 785, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/bin/python3.10', 'train_text_to_image_lora.py', '--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5', '--csv_file=data/meals_raw_2025-07-09_2024-01-01.csv', '--resolution=512', '--train_batch_size=1', '--max_train_steps=15000', '--learning_rate=1e-4', '--rank=4', '--output_dir=./lora-adapters', '--push_to_hub', '--hub_model_id=username/my-lora-model']' returned non-zero exit status 1.

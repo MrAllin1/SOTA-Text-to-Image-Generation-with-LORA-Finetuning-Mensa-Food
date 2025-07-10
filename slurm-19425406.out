@@ -1,0 +1,192 @@
+cuda available: True
+cuda device count: 1
+[+] Running on cuda
+[+] Loading models (on CPU)…
+[+] Preparing LoRA adapters…
+[+] Profiling data pipeline (~200 examples)…
+[+] ~200 imgs in 255.4s → 1.277s/img
+[+] 100-step benchmark…
+[+] 100 steps: 23.8s → 0.238s/step
+[+] Est. full training: 1.0h
+[+] Training start…
+Step 100/15000 — loss 0.1157
+Step 200/15000 — loss 0.0441
+Step 300/15000 — loss 0.0035
+Step 400/15000 — loss 0.1255
+Step 500/15000 — loss 0.0327
+[+] Saved ./lora-adapters/checkpoint-500
+Step 600/15000 — loss 0.0851
+Step 700/15000 — loss 0.1173
+Step 800/15000 — loss 0.7758
+Step 900/15000 — loss 0.0063
+Step 1000/15000 — loss 0.0059
+[+] Saved ./lora-adapters/checkpoint-1000
+Step 1100/15000 — loss 0.0235
+Step 1200/15000 — loss 0.0119
+Step 1300/15000 — loss 0.3267
+Step 1400/15000 — loss 0.4889
+Step 1500/15000 — loss 0.0067
+[+] Saved ./lora-adapters/checkpoint-1500
+Step 1600/15000 — loss 0.0029
+Step 1700/15000 — loss 0.0247
+Step 1800/15000 — loss 0.0030
+Step 1900/15000 — loss 0.0186
+Step 2000/15000 — loss 0.0062
+[+] Saved ./lora-adapters/checkpoint-2000
+Step 2100/15000 — loss 0.1178
+Step 2200/15000 — loss 0.0081
+Step 2300/15000 — loss 0.1658
+Step 2400/15000 — loss 0.4978
+Step 2500/15000 — loss 0.0625
+[+] Saved ./lora-adapters/checkpoint-2500
+Step 2600/15000 — loss 0.0628
+Step 2700/15000 — loss 0.1644
+Step 2800/15000 — loss 0.1173
+Step 2900/15000 — loss 0.0216
+Step 3000/15000 — loss 0.3319
+[+] Saved ./lora-adapters/checkpoint-3000
+Step 3100/15000 — loss 0.0128
+Step 3200/15000 — loss 0.0267
+Step 3300/15000 — loss 0.0273
+Step 3400/15000 — loss 0.0987
+Step 3500/15000 — loss 0.0045
+[+] Saved ./lora-adapters/checkpoint-3500
+Step 3600/15000 — loss 0.0020
+Step 3700/15000 — loss 0.0220
+Step 3800/15000 — loss 0.0048
+Step 3900/15000 — loss 0.5921
+Step 4000/15000 — loss 0.3278
+[+] Saved ./lora-adapters/checkpoint-4000
+Step 4100/15000 — loss 0.3099
+Step 4200/15000 — loss 0.5035
+Step 4300/15000 — loss 0.2069
+Step 4400/15000 — loss 0.0055
+Step 4500/15000 — loss 0.3481
+[+] Saved ./lora-adapters/checkpoint-4500
+Step 4600/15000 — loss 0.0035
+Step 4700/15000 — loss 0.0040
+Step 4800/15000 — loss 0.0699
+Step 4900/15000 — loss 0.0305
+Step 5000/15000 — loss 0.0175
+[+] Saved ./lora-adapters/checkpoint-5000
+Step 5100/15000 — loss 0.0523
+Step 5200/15000 — loss 0.6736
+Step 5300/15000 — loss 0.3456
+Step 5400/15000 — loss 0.0171
+Step 5500/15000 — loss 0.0469
+[+] Saved ./lora-adapters/checkpoint-5500
+Step 5600/15000 — loss 0.1475
+Step 5700/15000 — loss 0.1520
+Step 5800/15000 — loss 0.0759
+Step 5900/15000 — loss 0.4089
+Step 6000/15000 — loss 0.0701
+[+] Saved ./lora-adapters/checkpoint-6000
+Step 6100/15000 — loss 0.0305
+Step 6200/15000 — loss 0.1108
+Step 6300/15000 — loss 0.0310
+Step 6400/15000 — loss 0.0938
+Step 6500/15000 — loss 0.0628
+[+] Saved ./lora-adapters/checkpoint-6500
+Step 6600/15000 — loss 0.1950
+Step 6700/15000 — loss 0.2149
+Step 6800/15000 — loss 0.1191
+Step 6900/15000 — loss 0.0142
+Step 7000/15000 — loss 0.2650
+[+] Saved ./lora-adapters/checkpoint-7000
+Step 7100/15000 — loss 0.0034
+Step 7200/15000 — loss 0.3528
+Step 7300/15000 — loss 0.0336
+Step 7400/15000 — loss 0.0315
+Step 7500/15000 — loss 0.0250
+[+] Saved ./lora-adapters/checkpoint-7500
+Step 7600/15000 — loss 0.0029
+Step 7700/15000 — loss 0.2175
+Step 7800/15000 — loss 0.0105
+Step 7900/15000 — loss 0.2405
+Step 8000/15000 — loss 0.0034
+[+] Saved ./lora-adapters/checkpoint-8000
+Step 8100/15000 — loss 0.0167
+Step 8200/15000 — loss 0.1289
+Step 8300/15000 — loss 0.0029
+Step 8400/15000 — loss 0.1045
+Step 8500/15000 — loss 0.1467
+[+] Saved ./lora-adapters/checkpoint-8500
+Step 8600/15000 — loss 0.0089
+Step 8700/15000 — loss 0.0393
+Step 8800/15000 — loss 0.4218
+Step 8900/15000 — loss 0.0909
+Step 9000/15000 — loss 0.0217
+[+] Saved ./lora-adapters/checkpoint-9000
+Step 9100/15000 — loss 0.0177
+Step 9200/15000 — loss 0.5687
+Step 9300/15000 — loss 0.0206
+Step 9400/15000 — loss 0.0278
+Step 9500/15000 — loss 0.0062
+[+] Saved ./lora-adapters/checkpoint-9500
+Step 9600/15000 — loss 0.0033
+Step 9700/15000 — loss 0.0138
+Step 9800/15000 — loss 0.1712
+Step 9900/15000 — loss 0.0556
+Step 10000/15000 — loss 0.0039
+[+] Saved ./lora-adapters/checkpoint-10000
+Step 10100/15000 — loss 0.0036
+Step 10200/15000 — loss 0.4402
+Step 10300/15000 — loss 0.0122
+Step 10400/15000 — loss 0.4488
+Step 10500/15000 — loss 0.5997
+[+] Saved ./lora-adapters/checkpoint-10500
+Step 10600/15000 — loss 0.0044
+Step 10700/15000 — loss 0.1253
+Step 10800/15000 — loss 0.2429
+Step 10900/15000 — loss 0.0601
+Step 11000/15000 — loss 0.0057
+[+] Saved ./lora-adapters/checkpoint-11000
+Step 11100/15000 — loss 0.0322
+Step 11200/15000 — loss 0.0680
+Step 11300/15000 — loss 0.0027
+Step 11400/15000 — loss 0.0945
+Step 11500/15000 — loss 0.1457
+[+] Saved ./lora-adapters/checkpoint-11500
+Step 11600/15000 — loss 0.0582
+Step 11700/15000 — loss 0.7909
+Step 11800/15000 — loss 0.3203
+Step 11900/15000 — loss 0.6358
+Step 12000/15000 — loss 0.0065
+[+] Saved ./lora-adapters/checkpoint-12000
+Step 12100/15000 — loss 0.0175
+Step 12200/15000 — loss 0.0240
+Step 12300/15000 — loss 0.0558
+Step 12400/15000 — loss 0.1428
+Step 12500/15000 — loss 0.0661
+[+] Saved ./lora-adapters/checkpoint-12500
+Step 12600/15000 — loss 0.3750
+Step 12700/15000 — loss 0.0370
+Step 12800/15000 — loss 0.0067
+Step 12900/15000 — loss 0.0090
+Step 13000/15000 — loss 0.1223
+[+] Saved ./lora-adapters/checkpoint-13000
+Step 13100/15000 — loss 0.4091
+Step 13200/15000 — loss 0.0027
+Step 13300/15000 — loss 0.0048
+Step 13400/15000 — loss 0.6611
+Step 13500/15000 — loss 0.2497
+[+] Saved ./lora-adapters/checkpoint-13500
+Step 13600/15000 — loss 0.0119
+Step 13700/15000 — loss 0.0271
+Step 13800/15000 — loss 0.1933
+Step 13900/15000 — loss 0.0247
+Step 14000/15000 — loss 0.0127
+[+] Saved ./lora-adapters/checkpoint-14000
+Step 14100/15000 — loss 0.0083
+Step 14200/15000 — loss 0.4786
+Step 14300/15000 — loss 0.2676
+Step 14400/15000 — loss 0.0060
+Step 14500/15000 — loss 0.0399
+[+] Saved ./lora-adapters/checkpoint-14500
+Step 14600/15000 — loss 0.0025
+Step 14700/15000 — loss 0.0177
+Step 14800/15000 — loss 0.0271
+Step 14900/15000 — loss 0.0027
+Step 15000/15000 — loss 0.0570
+[+] Saved ./lora-adapters/checkpoint-15000
+[+] Done — outputs in ./lora-adapters
