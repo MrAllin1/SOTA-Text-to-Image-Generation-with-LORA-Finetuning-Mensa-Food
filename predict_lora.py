@@ -1,45 +1,72 @@
 #!/usr/bin/env python
 # predict_lora.py
 
+import argparse
+import sys
 import torch
 from diffusers import StableDiffusionPipeline
 from peft import PeftModel
 
 def run_lora_inference(
-    base_model_id: str = "runwayml/stable-diffusion-v1-5",
-    lora_weights_dir: str = "./lora-adapters",
-    prompt: str = "a delicious gourmet meal, photography",
-    num_images: int = 3,
-    height: int = 256,
-    width: int = 256,
-    guidance_scale: float = 7.5,
-    num_inference_steps: int = 50,
+    prompt: str,
+    base_model_id: str,
+    lora_weights_dir: str,
+    num_images: int,
+    height: int,
+    width: int,
+    guidance_scale: float,
+    num_inference_steps: int,
 ):
-    # 0) Device check
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"[+] Running on {device}")
-    if device == "cpu":
-        print("    ⚠️  Warning: running on CPU will be very slow.")
+    # 0) pick device in priority: mps (macOS) > cuda > cpu
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    elif torch.cuda.is_available():
+        device = torch.device("cuda")
+    else:
+        device = torch.device("cpu")
 
-    # 1) Load the base pipeline in half-precision & move to device
-    print(f"[+] Loading base model `{base_model_id}`…")
+    # pick dtype: fp16 only on cuda; otherwise fp32
+    dtype = torch.float16 if device.type == "cuda" else torch.float32
+
+    print(f"[+] Running on {device} (dtype={dtype})")
+    if device.type != "cuda":
+        print("    ⚠️  Warning: this will be slower than GPU, and LoRA in FP16 only runs on CUDA.")
+
+    # 1) load base pipeline
+    print(f"[+] Loading base model `{base_model_id}` in {dtype}…")
     pipe = StableDiffusionPipeline.from_pretrained(
         base_model_id,
-        torch_dtype=torch.float16,
-    ).to(device)
+        torch_dtype=dtype,
+    )
+    pipe = pipe.to(device)
 
-    # 2) Wrap its UNet with your LoRA adapters and move that to device too
+    # 2) wrap unet with your LoRA adapter
     print(f"[+] Loading LoRA weights from `{lora_weights_dir}`…")
-    pipe.unet = PeftModel.from_pretrained(pipe.unet, lora_weights_dir).to(device)
-
-    # optional: enable memory-efficient attention if your diffusers build supports it
     try:
-        pipe.enable_xformers_memory_efficient_attention()
-    except Exception:
-        pass
+        pipe.unet = PeftModel.from_pretrained(
+            pipe.unet,
+            lora_weights_dir,
+            torch_dtype=dtype,
+        )
+        pipe.unet = pipe.unet.to(device)
+    except Exception as e:
+        print("❌ Error loading LoRA weights:", e)
+        print(
+            "\nIf you see a safetensors `HeaderTooLarge` error,\n"
+            " re-run training with `safe_serialization=False` so your adapter is saved as a .bin,\n"
+            " or switch to a CUDA device for FP16 support."
+        )
+        sys.exit(1)
 
-    # 3) Run inference
-    print(f"[+] Generating {num_images} image(s) for prompt: {prompt!r}")
+    # optional: memory‐efficient attention (xformers) on CUDA
+    if device.type == "cuda":
+        try:
+            pipe.enable_xformers_memory_efficient_attention()
+        except:
+            pass
+
+    # 3) inference
+    print(f"[+] Generating {num_images} image(s) for prompt:\n    {prompt}")
     generator = torch.Generator(device).manual_seed(42)
     output = pipe(
         [prompt] * num_images,
@@ -51,21 +78,67 @@ def run_lora_inference(
     )
     images = output.images
 
-    # 4) Save to disk
+    # 4) save outputs
     for idx, img in enumerate(images):
-        out_path = f"lora_output_{idx}.png"
-        img.save(out_path)
-        print(f"    ✔️  Saved {out_path}")
-    print(f"[+] Done—{len(images)} image(s) written.")
+        filename = f"lora_output_{idx}.png"
+        img.save(filename)
+        print(f"    ✔️  Saved {filename}")
+
+    print(f"[+] Done — {len(images)} image(s) written.")
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Run inference with Stable Diffusion + LoRA (on MPS/CUDA/CPU)"
+    )
+    parser.add_argument(
+        "--prompt",
+        type=str,
+        required=True,
+        help="Your menu description, e.g. 'Tortellini gefüllt mit Ricotta...'"
+    )
+    parser.add_argument(
+        "--base_model_id",
+        type=str,
+        default="runwayml/stable-diffusion-v1-5",
+        help="HuggingFace repo of the base Stable Diffusion model"
+    )
+    parser.add_argument(
+        "--lora_weights_dir",
+        type=str,
+        default="./lora-adapters",
+        help="Directory where your LoRA adapters live"
+    )
+    parser.add_argument(
+        "--num_images", type=int, default=3,
+        help="How many images to generate"
+    )
+    parser.add_argument(
+        "--height", type=int, default=256,
+        help="Image height (must match fine-tune)"
+    )
+    parser.add_argument(
+        "--width", type=int, default=256,
+        help="Image width (must match fine-tune)"
+    )
+    parser.add_argument(
+        "--guidance_scale", type=float, default=7.5,
+        help="Classifier-free guidance scale"
+    )
+    parser.add_argument(
+        "--num_inference_steps", type=int, default=50,
+        help="Denoising steps"
+    )
+    return parser.parse_args()
 
 if __name__ == "__main__":
+    opts = parse_args()
     run_lora_inference(
-        base_model_id="runwayml/stable-diffusion-v1-5",
-        lora_weights_dir="./lora-adapters",
-        prompt="a photorealistic portrait of a futuristic city at sunset",
-        num_images=4,
-        height=256,   # match your fine-tune resolution
-        width=256,
-        guidance_scale=7.0,
-        num_inference_steps=50,
+        prompt=opts.prompt,
+        base_model_id=opts.base_model_id,
+        lora_weights_dir=opts.lora_weights_dir,
+        num_images=opts.num_images,
+        height=opts.height,
+        width=opts.width,
+        guidance_scale=opts.guidance_scale,
+        num_inference_steps=opts.num_inference_steps,
     )
