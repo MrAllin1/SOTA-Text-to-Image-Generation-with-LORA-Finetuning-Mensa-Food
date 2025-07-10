@@ -1,0 +1,7 @@
+cpu-bind=MASK - dlcgpu11, task  0  0 [701227]: mask 0x3c0000003c0000 set
+/var/spool/slurm/job19425400/slurm_script: line 11: module: command not found
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_cpu_threads_per_process` was set to `32` to improve out-of-box performance when training on CPUs
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+slurmstepd-dlcgpu11: error: *** JOB 19425400 ON dlcgpu11 CANCELLED AT 2025-07-10T07:21:02 ***

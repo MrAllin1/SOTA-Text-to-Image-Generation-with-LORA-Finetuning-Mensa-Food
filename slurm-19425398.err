@@ -1,0 +1,47 @@
+cpu-bind=MASK - dlcgpu11, task  0  0 [700516]: mask 0x3c0000003c0000 set
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_cpu_threads_per_process` was set to `32` to improve out-of-box performance when training on CPUs
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/train_text_to_image_lora.py:133: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  input_ids    = torch.tensor(batch["input_ids"]).to(device)
+Traceback (most recent call last):
+  File "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/train_text_to_image_lora.py", line 208, in <module>
+    main()
+  File "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/train_text_to_image_lora.py", line 144, in main
+    noise_pred = unet(noisy_latents, timesteps, encoder_hidden_states).sample
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/peft/peft_model.py", line 878, in forward
+    return self.get_base_model()(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/unets/unet_2d_condition.py", line 1141, in forward
+    emb = self.time_embedding(t_emb, timestep_cond)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/diffusers/models/embeddings.py", line 1308, in forward
+    sample = self.linear_1(sample)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:0! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+Traceback (most recent call last):
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1199, in launch_command
+    simple_launcher(args)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/launch.py", line 785, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/bin/python3.10', 'train_text_to_image_lora.py', '--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5', '--csv_file=data/meals_raw_2025-07-09_2024-01-01.csv', '--resolution=512', '--train_batch_size=1', '--max_train_steps=15000', '--learning_rate=1e-4', '--rank=4', '--output_dir=./lora-adapters', '--push_to_hub', '--hub_model_id=username/my-lora-model']' returned non-zero exit status 1.
