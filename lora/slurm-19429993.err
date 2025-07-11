@@ -1,3 +1,0 @@
-cpu-bind=MASK - dlcgpu04, task  0  0 [425186]: mask 0x704000007040000 set
-/var/spool/slurm/job19429993/slurm_script: line 11: module: command not found
-ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
