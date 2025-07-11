@@ -1,0 +1,13 @@
+cuda available: True
+cuda device count: 1
+[+] Running on cuda
+[+] Loading models (on CPU)…
+[+] Preparing LoRA adapters…
+[+] Profiling data pipeline (~200 examples)…
+👀 Dataset size (train split): 1667 examples
+[+] ~200 imgs in 3.9s → 0.020s/img
+👀 Dataset size (train split): 1667 examples
+[+] 100-step benchmark…
+[+] 100 steps: 57.8s → 0.578s/step
+[+] Est. full training: 4.8h
+[+] Training start…

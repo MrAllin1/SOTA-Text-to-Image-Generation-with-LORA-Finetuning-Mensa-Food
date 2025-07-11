@@ -8,7 +8,7 @@ sbatch train_lora_job.sh
 
 
 squeue --me
-sacct -j 19425405 --format=JobID,State,Elapsed,MaxRSS
+sacct -j 19429865 --format=JobID,State,Elapsed,MaxRSS
 --------------------------------------------------------------------------------------------------------------------
 To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \

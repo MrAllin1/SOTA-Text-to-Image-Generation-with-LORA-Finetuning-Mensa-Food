@@ -21,7 +21,7 @@ def parse_args():
     parser.add_argument("--csv_file",                 type=str, required=True)
     parser.add_argument("--resolution",               type=int, default=512)
     parser.add_argument("--train_batch_size",         type=int, default=1)
-    parser.add_argument("--max_train_steps",          type=int, default=30000)
+    parser.add_argument("--max_train_steps",          type=int, default=15000)
     parser.add_argument("--learning_rate",            type=float, default=2e-4)
     parser.add_argument("--lr_scheduler",             type=str, default="cosine")
     parser.add_argument("--lr_warmup_steps",          type=int, default=200)
@@ -59,6 +59,10 @@ def main():
         subfolder="unet",
         torch_dtype=torch.float16,
     )
+    # reduce peak memory: attention slicing + gradient checkpointing
+    unet.set_attention_slice("auto")
+    unet.enable_gradient_checkpointing()
+
     noise_scheduler = DDPMScheduler.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="scheduler"
     )

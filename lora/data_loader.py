@@ -24,6 +24,7 @@ def get_dataloader(
     split: str = "train",
 ):
     ds = load_dataset("csv", data_files={split: csv_file}, split=split)
+    print(f"👀 Dataset size ({split} split): {len(ds)} examples")
     base_dir = os.path.dirname(csv_file)
     tfm = make_transforms(resolution)
     max_length = 77
