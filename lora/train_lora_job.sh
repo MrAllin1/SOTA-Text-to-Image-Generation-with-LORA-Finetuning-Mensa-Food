@@ -4,8 +4,8 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem=40G
 #SBATCH --time=24:00:00
-#SBATCH --output=slurm-%j.out
-#SBATCH --error=slurm-%j.err
+#SBATCH --output=errors/slurm-%j.out
+#SBATCH --error=errors/slurm-%j.err
 
 # load CUDA drivers (pick your installed version)
 module load cuda/11.7

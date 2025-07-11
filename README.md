@@ -1,6 +1,7 @@
 # mensa_t2i
 SoTA T2I Adapting and Finetuning
-
+--------------------------------------------------------------------------------------------------------------------
+To start training run these commands:
 
 chmod +x train_lora_job.sh
 sbatch train_lora_job.sh
@@ -8,13 +9,12 @@ sbatch train_lora_job.sh
 
 squeue --me
 sacct -j 19425405 --format=JobID,State,Elapsed,MaxRSS
-19425346
-
-
-Prompt for predicting with the finetuned model
-
+--------------------------------------------------------------------------------------------------------------------
+To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \
-  --prompt "Tortellini gefüllt mit Ricotta und Spinat Basilikum-Käsesauce Frühlingszwiebel Tomatenwürfel und geriebener Emmentaler" \
-  --num_images 4 \
+  --prompt "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel" \
+  --num_images 2 \
   --height 256 \
-  --width 256
+  --width 256 \
+  --lora_weights_dir ./lora-adapters/checkpoint-15000
+--------------------------------------------------------------------------------------------------------------------

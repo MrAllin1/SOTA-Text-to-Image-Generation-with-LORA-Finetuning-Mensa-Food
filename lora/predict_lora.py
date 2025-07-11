@@ -3,6 +3,8 @@
 
 import argparse
 import sys
+import os
+import glob
 import torch
 from diffusers import StableDiffusionPipeline
 from peft import PeftModel
@@ -78,13 +80,31 @@ def run_lora_inference(
     )
     images = output.images
 
+    # ← new: auto-make a fresh output folder under ./output
+    root = "./output"
+    os.makedirs(root, exist_ok=True)
+
+    existing = glob.glob(os.path.join(root, "prediction_*"))
+    nums = [
+        int(os.path.basename(d).split("_")[1])
+        for d in existing
+        if os.path.basename(d).split("_")[1].isdigit()
+    ]
+    next_num = max(nums + [0]) + 1
+    out_dir = os.path.join(root, f"prediction_{next_num}")
+    os.makedirs(out_dir, exist_ok=True)
+
+    # save the prompt
+    with open(os.path.join(out_dir, "prompt.txt"), "w") as f:
+        f.write(prompt)
+
     # 4) save outputs
     for idx, img in enumerate(images):
-        filename = f"lora_output_{idx}.png"
+        filename = os.path.join(out_dir, f"output_{idx}.png")
         img.save(filename)
         print(f"    ✔️  Saved {filename}")
 
-    print(f"[+] Done — {len(images)} image(s) written.")
+    print(f"[+] Done — {len(images)} image(s) in `{out_dir}`.")
 
 def parse_args():
     parser = argparse.ArgumentParser(
