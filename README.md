@@ -12,9 +12,9 @@ sacct -j 19429865 --format=JobID,State,Elapsed,MaxRSS
 --------------------------------------------------------------------------------------------------------------------
 To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \
-  --prompt "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings" \
+  --prompt "Borek mit Spinat Karottencurry Erbsenpuree" \
   --num_images 2 \
   --height 512 \
   --width 512 \
-  --lora_weights_dir ./lora-adapters-second-train
+  --lora_weights_dir ./lora-adapters-second-train/checkpoint-30000
 --------------------------------------------------------------------------------------------------------------------

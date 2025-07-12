@@ -42,15 +42,12 @@ def main():
     accelerator.print(f"[+] Running on {device}")
 
     # 2) Tokenizer
-    tokenizer = CLIPTokenizer.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="tokenizer"
-    )
+    multilingual_clip = "laion/CLIP-ViT-B-32-multilingual-v1"
+    tokenizer = CLIPTokenizer.from_pretrained(multilingual_clip)
 
     # 3) Load models **on CPU** (Accelerate will move them for us)
     accelerator.print("[+] Loading models (on CPU)…")
-    text_encoder = CLIPTextModel.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="text_encoder"
-    )
+    text_encoder = CLIPTextModel.from_pretrained(multilingual_clip)
     vae = AutoencoderKL.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="vae"
     )
