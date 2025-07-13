@@ -43,7 +43,7 @@ for prompt in "${PROMPTS[@]}"; do
   echo "▶️  Generating for prompt: $prompt"
   python predict_lora.py \
     --prompt "$prompt" \
-    --base_model_id "runwayml/stable-diffusion-v1-5" \
+    --text_encoder_dir "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/lora/lora-adapters-third-train" \
     --lora_checkpoint "$LORA_CKPT" \
     --num_images "$NUM_IMAGES" \
     --height "$HEIGHT" \
