@@ -26,14 +26,18 @@ EOF
 
 # launch with Accelerate
 export MODEL="runwayml/stable-diffusion-v1-5"
+export TXT_ENCODER="M-CLIP/XLM-Roberta-Large-Vit-L-14" 
 accelerate launch train_text_to_image_lora.py \
   --pretrained_model_name_or_path="$MODEL" \
+  --text_encoder_name_or_path="$TXT_ENCODER" \
+  --tokenizer_name_or_path="$TXT_ENCODER" \
   --csv_file="/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/data/meals_raw_2025-07-09_2024-01-01.csv" \
   --resolution=512 \
   --train_batch_size=1 \
   --max_train_steps=30000 \
   --learning_rate=2e-4 \
   --rank=8 \
-  --output_dir="./lora-adapters-second-train" \
+  --lora_text \
+  --output_dir="./lora-adapters-third-train" \
   --push_to_hub \
-  --hub_model_id="username/my-lora-model-second-train"
+  --hub_model_id="username/my-lora-model-third-train"
