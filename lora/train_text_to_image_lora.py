@@ -6,7 +6,7 @@ import os
 import time
 import torch
 from accelerate import Accelerator
-from transformers import CLIPTextModel, CLIPTokenizer
+from transformers import CLIPTextModel, CLIPTokenizer, AutoTokenizer, AutoModel
 from diffusers import AutoencoderKL, UNet2DConditionModel, DDPMScheduler
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from diffusers.optimization import get_scheduler
@@ -42,12 +42,16 @@ def main():
     accelerator.print(f"[+] Running on {device}")
 
     # 2) Tokenizer
-    multilingual_clip = "laion/CLIP-ViT-B-32-multilingual-v1"
-    tokenizer = CLIPTokenizer.from_pretrained(multilingual_clip)
-
+    multilingual_clip = "sentence-transformers/clip-ViT-B-32-multilingual-v1"
+    tokenizer = AutoTokenizer.from_pretrained(
+        multilingual_clip,
+        use_fast=False
+    )
     # 3) Load models **on CPU** (Accelerate will move them for us)
     accelerator.print("[+] Loading models (on CPU)…")
-    text_encoder = CLIPTextModel.from_pretrained(multilingual_clip)
+    text_encoder = AutoModel.from_pretrained(
+        multilingual_clip,
+    )
     vae = AutoencoderKL.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="vae"
     )

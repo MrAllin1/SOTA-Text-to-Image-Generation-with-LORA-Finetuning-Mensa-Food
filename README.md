@@ -8,7 +8,7 @@ sbatch train_lora_job.sh
 
 
 squeue --me
-sacct -j 19429865 --format=JobID,State,Elapsed,MaxRSS
+sacct -j 19561432 --format=JobID,State,Elapsed,MaxRSS
 --------------------------------------------------------------------------------------------------------------------
 To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \
@@ -16,5 +16,5 @@ python predict_lora.py \
   --num_images 2 \
   --height 512 \
   --width 512 \
-  --lora_weights_dir ./lora-adapters-second-train/checkpoint-30000
+  --lora_weights_dir ./lora-adapters-third-train/checkpoint-30000
 --------------------------------------------------------------------------------------------------------------------
