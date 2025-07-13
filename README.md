@@ -12,7 +12,7 @@ sacct -j 19429865 --format=JobID,State,Elapsed,MaxRSS
 --------------------------------------------------------------------------------------------------------------------
 To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \
-  --prompt "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings" \
+  --prompt "Hahnchenkeule gebraten Krauter-Joghurtdip Pommes frites" \
   --num_images 2 \
   --height 512 \
   --width 512 \
