@@ -11,7 +11,7 @@ from diffusers import AutoencoderKL, UNet2DConditionModel, DDPMScheduler
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from diffusers.optimization import get_scheduler
 
-from data_loader import get_dataloader  # your data package
+from data_loader import get_dataloader
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -82,27 +82,20 @@ def main():
     # 5) Data profiling
     accelerator.print("[+] Profiling data pipeline (~200 examples)…")
     start_map = time.time()
-    dl_profile = get_dataloader(
-        csv_file=args.csv_file,
-        tokenizer=tokenizer,
-        resolution=args.resolution,
-        batch_size=args.train_batch_size,
-    )
-    seen = 0
-    for batch in dl_profile:
-        seen += batch["pixel_values"].shape[0]
-        if seen >= 200:
-            break
-    map_time = time.time() - start_map
-    accelerator.print(f"[+] ~{seen} imgs in {map_time:.1f}s → {map_time/seen:.3f}s/img")
-
-    # real dataloader
     dataloader = get_dataloader(
         csv_file=args.csv_file,
         tokenizer=tokenizer,
         resolution=args.resolution,
         batch_size=args.train_batch_size,
     )
+    seen = 0
+    for batch in dataloader:
+        seen += batch["pixel_values"].shape[0]
+        if seen >= 200:
+            break
+    map_time = time.time() - start_map
+    accelerator.print(f"[+] ~{seen} imgs in {map_time:.1f}s → {map_time/seen:.3f}s/img")
+    dataloader = iter(dataloader)  # reset iterator for training
 
     # 6) Optimizer & LR scheduler
     optimizer = torch.optim.AdamW(
