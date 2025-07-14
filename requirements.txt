@@ -8,5 +8,5 @@ peft
 safetensors
 Pillow
 huggingface-hub
-
-
+deep_translator
+wandb
