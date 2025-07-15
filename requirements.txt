@@ -10,3 +10,4 @@ Pillow
 huggingface-hub
 deep_translator
 wandb
+spacy
