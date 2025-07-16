@@ -18,3 +18,9 @@ python predict_lora.py \
   --width 512 \
   --lora_weights_dir ./lora-adapters-second-train
 --------------------------------------------------------------------------------------------------------------------
+python augment_dataset.py \
+    --input_csv  ../data/meals_unique_mensafood.csv \
+    --images_root ../data \
+    --output_dir ../data/aug \
+    --output_csv  meals_augmented.csv \
+    --n_augs 4 -j 8

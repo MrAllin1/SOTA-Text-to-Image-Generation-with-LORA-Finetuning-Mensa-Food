@@ -8,5 +8,3 @@ peft
 safetensors
 Pillow
 huggingface-hub
-
-
