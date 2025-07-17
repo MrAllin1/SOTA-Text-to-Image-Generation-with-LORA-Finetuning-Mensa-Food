@@ -36,14 +36,19 @@ prompts=(
   "Mensafood Pasta with tomatoes on top"
   "Mensafood Curry sausage or Planted™ curry sausage; French fries"
 )
-
+prompts_german=(
+    "Tortellini gefullt mit Ricotta und Spinat Basilikum-Kasesauce Fruhlingszwiebel Tomatenwurfel und geriebener Emmentaler"
+    "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel"
+    "Currywurst oder planted Currywurst Pommes frites"
+    "Kichererbsenpolenta mit Ratatouille; Schafskäse mit Minze"
+)
 # ── inference loop ────────────────────────────────────────────────────────
 for prompt in "${prompts[@]}"; do
   echo "=========================================="
   echo "🔹 Generating for prompt: $prompt"
   python predict_lora.py \
     --prompt "$prompt" \
-    --lora_weights_dir "./lora-adapters-forth-train/checkpoint-30000" \
+    --lora_weights_dir "./lora-adapters-third-train/checkpoint-30000" \
     --num_images 2 \
     --height 512 \
     --width 512

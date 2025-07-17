@@ -1,0 +1,48 @@
+CUDA available: True
+GPU count: 1
+GPU name: NVIDIA GeForce RTX 2080 Ti
+==========================================
+🔹 Generating for prompt: Mensafood Chickpea polenta with ratatouille; sheep’s cheese with mint
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-third-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Mensafood Chickpea polenta with ratatouille; sheep’s cheese with mint
+    ✔️  Saved ./output/prediction_25/output_0.png
+    ✔️  Saved ./output/prediction_25/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_25`.
+
+==========================================
+🔹 Generating for prompt: Mensafood Tortellini filled with ricotta and spinach in basil cheese sauce; spring onions; diced tomatoes; grated Emmental
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-third-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Mensafood Tortellini filled with ricotta and spinach in basil cheese sauce; spring onions; diced tomatoes; grated Emmental
+    ✔️  Saved ./output/prediction_26/output_0.png
+    ✔️  Saved ./output/prediction_26/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_26`.
+
+==========================================
+🔹 Generating for prompt: Mensafood Pasta with tomatoes on top
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-third-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Mensafood Pasta with tomatoes on top
+    ✔️  Saved ./output/prediction_27/output_0.png
+    ✔️  Saved ./output/prediction_27/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_27`.
+
+==========================================
+🔹 Generating for prompt: Mensafood Curry sausage or Planted™ curry sausage; French fries
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-third-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Mensafood Curry sausage or Planted™ curry sausage; French fries
+    ✔️  Saved ./output/prediction_28/output_0.png
+    ✔️  Saved ./output/prediction_28/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_28`.
+
+✅ All done!
