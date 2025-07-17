@@ -63,7 +63,9 @@ def main():
         subfolder="unet",
         torch_dtype=torch.float16,
     )
-    unet.set_attention_slice("auto").enable_gradient_checkpointing()
+    unet.set_attention_slice("auto")          # returns None
+    unet.enable_gradient_checkpointing()      # call separately
+
     noise_scheduler = DDPMScheduler.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="scheduler"
     )
@@ -102,7 +104,10 @@ def main():
         trainable_params, lr=args.learning_rate, betas=(0.9, 0.999), weight_decay=0.01
     )
     lr_scheduler = get_scheduler(
-        args.lr_scheduler, optimizer, args.lr_warmup_steps, args.max_train_steps
+        name=args.lr_scheduler,              # "cosine"
+        optimizer=optimizer,
+        num_warmup_steps=args.lr_warmup_steps,
+        num_training_steps=args.max_train_steps,
     )
 
     # 7) Prepare (moves everything to device)

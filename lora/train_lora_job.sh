@@ -30,16 +30,16 @@ export MODEL="runwayml/stable-diffusion-v1-5"
 
 accelerate launch train_text_to_image_lora.py \
   --pretrained_model_name_or_path "$MODEL" \
-  --csv_file "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/data/meals_translated_en_with_gpt_03.csv" \
+  --csv_file "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/data/meals_augmented.csv" \
   --resolution 512 \
   --train_batch_size 1 \
   --max_train_steps 30000 \
   --learning_rate 2e-4 \
   --rank 8 \
   --checkpointing_steps 5000 \
-  --output_dir "./lora-adapters-third-train" \
+  --output_dir "./lora-adapters-forth-train" \
   --push_to_hub \
-  --hub_model_id "username/my-lora-model-third-train"
+  --hub_model_id "username/my-lora-model-forth-train"
 
 # ── after (or during) the job ──────────────────────────────────────────
 # On the login node or via SSH tunnel:
