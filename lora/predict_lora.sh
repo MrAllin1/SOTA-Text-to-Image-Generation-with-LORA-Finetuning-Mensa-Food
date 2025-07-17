@@ -43,12 +43,12 @@ prompts_german=(
     "Kichererbsenpolenta mit Ratatouille; Schafskäse mit Minze"
 )
 # ── inference loop ────────────────────────────────────────────────────────
-for prompt in "${prompts[@]}"; do
+for prompt in "${prompts_german[@]}"; do
   echo "=========================================="
   echo "🔹 Generating for prompt: $prompt"
   python predict_lora.py \
     --prompt "$prompt" \
-    --lora_weights_dir "./lora-adapters-third-train/checkpoint-30000" \
+    --lora_weights_dir "./lora-adapters-second-train/checkpoint-30000" \
     --num_images 2 \
     --height 512 \
     --width 512

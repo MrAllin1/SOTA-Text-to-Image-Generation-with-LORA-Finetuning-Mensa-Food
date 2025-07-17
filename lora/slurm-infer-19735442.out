@@ -1,0 +1,48 @@
+CUDA available: True
+GPU count: 1
+GPU name: NVIDIA GeForce RTX 2080 Ti
+==========================================
+🔹 Generating for prompt: Tortellini gefullt mit Ricotta und Spinat Basilikum-Kasesauce Fruhlingszwiebel Tomatenwurfel und geriebener Emmentaler
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-second-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Tortellini gefullt mit Ricotta und Spinat Basilikum-Kasesauce Fruhlingszwiebel Tomatenwurfel und geriebener Emmentaler
+    ✔️  Saved ./output/prediction_29/output_0.png
+    ✔️  Saved ./output/prediction_29/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_29`.
+
+==========================================
+🔹 Generating for prompt: Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-second-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel
+    ✔️  Saved ./output/prediction_30/output_0.png
+    ✔️  Saved ./output/prediction_30/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_30`.
+
+==========================================
+🔹 Generating for prompt: Currywurst oder planted Currywurst Pommes frites
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-second-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Currywurst oder planted Currywurst Pommes frites
+    ✔️  Saved ./output/prediction_31/output_0.png
+    ✔️  Saved ./output/prediction_31/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_31`.
+
+==========================================
+🔹 Generating for prompt: Kichererbsenpolenta mit Ratatouille; Schafskäse mit Minze
+[+] Running on cuda (dtype=torch.float16)
+[+] Loading base model `runwayml/stable-diffusion-v1-5` in torch.float16…
+[+] Loading LoRA weights from `./lora-adapters-second-train/checkpoint-30000`…
+[+] Generating 2 image(s) for prompt:
+    Kichererbsenpolenta mit Ratatouille; Schafskäse mit Minze
+    ✔️  Saved ./output/prediction_32/output_0.png
+    ✔️  Saved ./output/prediction_32/output_1.png
+[+] Done — 2 image(s) in `./output/prediction_32`.
+
+✅ All done!
