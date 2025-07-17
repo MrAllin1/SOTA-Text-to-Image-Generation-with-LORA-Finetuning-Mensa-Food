@@ -12,11 +12,11 @@ sacct -j 19721958 --format=JobID,State,Elapsed,MaxRSS
 --------------------------------------------------------------------------------------------------------------------
 To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \
-  --prompt "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings" \
+  --prompt "Mensafood Chickpea polenta with ratatouille; sheep’s cheese with mint" \
   --num_images 2 \
   --height 512 \
   --width 512 \
-  --lora_weights_dir ./lora-adapters-second-train
+  --lora_weights_dir ./lora-adapters-forth-train/checkpoint-15000
 --------------------------------------------------------------------------------------------------------------------
 python augment_dataset.py \
     --input_csv  ../data/meals_unique_mensafood.csv \

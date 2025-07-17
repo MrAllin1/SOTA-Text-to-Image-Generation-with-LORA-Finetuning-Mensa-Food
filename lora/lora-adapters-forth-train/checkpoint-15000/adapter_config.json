@@ -6,7 +6,6 @@
   },
   "base_model_name_or_path": null,
   "bias": "none",
-  "corda_config": null,
   "eva_config": null,
   "exclude_modules": null,
   "fan_in_fan_out": false,
