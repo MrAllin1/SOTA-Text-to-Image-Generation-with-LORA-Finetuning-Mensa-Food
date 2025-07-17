@@ -8,7 +8,7 @@ I kicked off a second fine‐tuning run on the same base model with higher capac
 
 --Training steps: 30,000 with AdamW optimizer (learning rate 2 × 10⁻⁴)
 
---Checkpointing: saved adapter weights every 5,000 steps
+--Checkpointing: saved adapter weights every 5,t000 steps
 
 --Output: final LoRA weights pushed to username/my-lora-model-second-train on the Hugging Face Hub
 
