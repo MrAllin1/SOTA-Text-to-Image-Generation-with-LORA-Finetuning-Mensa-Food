@@ -138,8 +138,8 @@ def main():
 
 
     # 5) **Wrap everything** so Accelerate moves it all to `device`
-    unet, text_encoder, vae, optimizer, dataloader, lr_scheduler = accelerator.prepare(
-        unet, text_encoder, vae, optimizer, dataloader, lr_scheduler
+    unet, text_encoder, vae, dataloader = accelerator.prepare(
+        unet, text_encoder, vae, dataloader
     )
 
     # 6) test pretrained model
