@@ -7,10 +7,10 @@ import torch
 import clip
 import spacy
 import json
-import tqdm
 import pandas as pd
 import sys
 import argparse
+from tqdm import tqdm
 from PIL import Image
 
 nlp = spacy.load('en_core_web_sm')
@@ -45,7 +45,7 @@ def parse_args():
     parser.add_argument(
         "--evallen",
         type=int,
-        default=100,
+        default=-1,
         help="Number of samples to evaluate"
     )
     args = parser.parse_args()
@@ -59,6 +59,9 @@ def main():
     except Exception as e:
         print(f"Error loading CSV file: {e}")
         sys.exit(1)
+    if args.evallen == -1:
+        args.evallen = len(df)
+    print(f"Ready to evaluate first {args.evallen} samples in {args.csv_path}")
 
     cnt = 0
     sim_list = []
@@ -112,7 +115,7 @@ def main():
     score = 0
     for i in range(len(sim_dict)):
         score += float(sim_dict[i]['answer'])
-    with open(f'{output_dir}/score_avg.txt', 'w') as f:
+    with open(f'{output_dir}/score_avg_{args.evallen}.txt', 'w') as f:
         f.write('score avg: ' + str(score / len(sim_dict)))
     print("score avg: ", score / len(sim_dict))
 
