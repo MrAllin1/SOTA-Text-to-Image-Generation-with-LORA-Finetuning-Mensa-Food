@@ -3,6 +3,7 @@ torchvision
 transformers
 diffusers>=0.21.0
 accelerate
+clip
 datasets
 peft
 safetensors
