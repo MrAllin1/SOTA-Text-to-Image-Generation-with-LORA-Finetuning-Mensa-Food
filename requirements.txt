@@ -3,6 +3,7 @@ torchvision
 transformers
 diffusers>=0.21.0
 accelerate
+openai
 openai-clip
 datasets
 peft
