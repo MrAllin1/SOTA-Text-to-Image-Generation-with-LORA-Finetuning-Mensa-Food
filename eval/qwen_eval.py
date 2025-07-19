@@ -166,13 +166,15 @@ def main():
             
             question_for_agent = []
             
-            for k in range(num_np):
+            for i, k in enumerate(range(num_np)):
                 text = f"""
                 Evaluate if there are '{prompt[k][0]}' in the image according the criteria:\n\
                 A: there are {prompt[k][2]}, and {args.category} is good. {prompt[k][3]} are appropriate for the contents.\n\
                 B: there are {prompt[k][2]}, but {args.category} is bad.\n\
                 C: there is {prompt[k][1]}, but not all {prompt[k][2]} appear.\n\
-                D: no {prompt[k][1]} in the image.\n
+                D: no {prompt[k][1]} in the image.\n\
+                Provide a score (0-100) and explanation in JSON format(omit all formatting chars like \'\n\') \
+                eg: \"obj_id\": {i+1}, \"score\": 82, \"explanation\": \"...(within 30 words)\".\n
                 """
                     
                 dic = {"type": "text", "text": text}
@@ -235,9 +237,7 @@ def main():
         
         # Make API call with retry logic
         question_prompt = 'You are my assistant to identify any objects and their {args.category} in the image.\n' + \
-            '\n'.join([question_for_agent[num_q]['text'] for num_q in range(num_np)]) + \
-            '\n After analyzing all objects and their corresponding criterias, provide your final score (0-100) and explanation in JSON format(omit all formatting chars like \'\n\') \
-                eg: \"score\": 82, \"explanation\": \"...(within 30 words)\".'
+            '\n'.join([question_for_agent[num_q]['text'] for num_q in range(num_np)])
         max_attempts = 3
         attempt_count = 0
         average_score = 0
