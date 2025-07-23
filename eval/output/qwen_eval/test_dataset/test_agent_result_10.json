@@ -1,0 +1,72 @@
+[
+  {
+    "row_index": 0,
+    "folder": "prediction_1",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_1/output_0.png",
+    "prompt": "geschmortes Rindfleischstück und gebratenes Schweinefleisch und gemischter grüner Salat und Ungarisches Gulasch",
+    "score": 73.33333333333333
+  },
+  {
+    "row_index": 1,
+    "folder": "prediction_2",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_2/output_0.png",
+    "prompt": "Spiegelei und gebratenes Schweinefleisch und gebratene Schnitzel und Salat mit Maiskörnern geriebene Karotten geschnittene Paprika",
+    "score": 77.5
+  },
+  {
+    "row_index": 2,
+    "folder": "prediction_3",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_3/output_0.png",
+    "prompt": "Ungarisches Gulasch und lange Wurst und gemischter grüner Salat mit geschnittener Paprika Gurke und Hühnernudeln",
+    "score": 17.0
+  },
+  {
+    "row_index": 3,
+    "folder": "prediction_4",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_4/output_0.png",
+    "prompt": "gebratener Fisch und gebratenes Schweinefleisch und gemischter grüner Salat und Kartoffelsalat und Kung Pao Hühnchen",
+    "score": 0.0
+  },
+  {
+    "row_index": 4,
+    "folder": "prediction_5",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_5/output_0.png",
+    "prompt": "gebratene Garnelenkuchen und gebratener Kabeljau und Reisnudeln und grüner Salat",
+    "score": 20.0
+  },
+  {
+    "row_index": 5,
+    "folder": "prediction_6",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_6/output_0.png",
+    "prompt": "gegrillte Hühnerflügel und gebratenes Rindfleisch und kleine Wurst und Reis und grüner Salat",
+    "score": 0.0
+  },
+  {
+    "row_index": 6,
+    "folder": "prediction_7",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_7/output_0.png",
+    "prompt": "geschmortes Rindfleischstück und lange Wurst und Fleischbällchen und Salat mit Mais gekochtem Ei Brokkoli",
+    "score": 20.0
+  },
+  {
+    "row_index": 7,
+    "folder": "prediction_8",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_8/output_0.png",
+    "prompt": "gebratenes Hähnchenbein und Wurst und geschmortes Hühnerfleisch mit Pilzsauce und gemischter grüner Salat",
+    "score": 78.0
+  },
+  {
+    "row_index": 8,
+    "folder": "prediction_9",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_9/output_0.png",
+    "prompt": "geschmortes Hühnerfleisch und gemischter Salat mit Kopfsalat geriebene Karotten und gegrillter Kürbis mit Käse",
+    "score": 81.25
+  },
+  {
+    "row_index": 9,
+    "folder": "prediction_10",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora_output/prediction_10/output_0.png",
+    "prompt": "gebratenes Hähnchenbein und lange Wurst und gemischter Salat mit Maiskörnern geschnittene Paprika Kopfsalat Tomatenscheiben",
+    "score": 73.33333333333333
+  }
+]
