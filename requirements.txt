@@ -13,3 +13,4 @@ huggingface-hub
 deep_translator
 wandb
 spacy
+pytorch-fid
