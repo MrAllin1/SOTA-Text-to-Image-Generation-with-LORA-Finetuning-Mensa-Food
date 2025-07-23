@@ -48,7 +48,7 @@ for prompt in "${prompts_german[@]}"; do
   echo "🔹 Generating for prompt: $prompt"
   python predict_lora.py \
     --prompt "$prompt" \
-    --lora_weights_dir "./lora-adapters/checkpoint-15000" \
+    --lora_weights_dir "./lora/lora-adapters-forth-train/checkpoint-30000" \
     --num_images 2 \
     --height 256 \
     --width 256
