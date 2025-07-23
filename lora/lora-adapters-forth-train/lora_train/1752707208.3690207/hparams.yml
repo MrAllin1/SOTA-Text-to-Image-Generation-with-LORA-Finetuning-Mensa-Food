@@ -1,0 +1,13 @@
+checkpointing_steps: 5000
+csv_file: /work/dlclarge2/alidemaa-dl_lab/mensa_t2i/data/meals_augmented.csv
+hub_model_id: username/my-lora-model-forth-train
+learning_rate: 0.0002
+lr_scheduler: cosine
+lr_warmup_steps: 200
+max_train_steps: 30000
+output_dir: ./lora-adapters-forth-train
+pretrained_model_name_or_path: runwayml/stable-diffusion-v1-5
+push_to_hub: true
+rank: 8
+resolution: 512
+train_batch_size: 1

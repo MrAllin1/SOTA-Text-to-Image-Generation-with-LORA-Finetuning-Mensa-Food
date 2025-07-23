@@ -10,17 +10,16 @@ sbatch train_lora_job.sh
 
 
 squeue --me
-sacct -j 19629176 --format=JobID,State,Elapsed,MaxRSS
+sacct -j 19735468 --format=JobID,State,Elapsed,MaxRSS
 --------------------------------------------------------------------------------------------------------------------
 To predict with a certain prompt cd into lora folder and run this:
 python predict_lora.py \
-  --prompt "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings" \
+  --prompt "Mensafood Chickpea polenta with ratatouille; sheep’s cheese with mint" \
   --num_images 2 \
   --height 512 \
   --width 512 \
-  --lora_weights_dir ./lora-adapters-second-train
+  --lora_weights_dir ./lora-adapters-forth-train/checkpoint-15000
 --------------------------------------------------------------------------------------------------------------------
-
 
 ## eval
 ### llm-eval
