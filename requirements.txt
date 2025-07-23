@@ -3,8 +3,13 @@ torchvision
 transformers
 diffusers>=0.21.0
 accelerate
+openai
+openai-clip
 datasets
 peft
 safetensors
 Pillow
 huggingface-hub
+deep_translator
+wandb
+spacy

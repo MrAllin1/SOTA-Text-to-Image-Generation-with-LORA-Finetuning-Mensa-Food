@@ -1,6 +1,8 @@
 # mensa_t2i
 SoTA T2I Adapting and Finetuning
 --------------------------------------------------------------------------------------------------------------------
+
+## train
 To start training run these commands:
 
 chmod +x train_lora_job.sh
@@ -18,9 +20,7 @@ python predict_lora.py \
   --width 512 \
   --lora_weights_dir ./lora-adapters-forth-train/checkpoint-15000
 --------------------------------------------------------------------------------------------------------------------
-python augment_dataset.py \
-    --input_csv  ../data/meals_unique_mensafood.csv \
-    --images_root ../data \
-    --output_dir ../data/aug \
-    --output_csv  meals_augmented.csv \
-    --n_augs 4 -j 8
+
+## eval
+### llm-eval
+Use spacy to extract the noun phrase: 'python -m spacy download en_core_web_sm'
