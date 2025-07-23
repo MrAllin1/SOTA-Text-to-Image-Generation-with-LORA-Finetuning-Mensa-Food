@@ -50,8 +50,8 @@ for prompt in "${prompts_german[@]}"; do
     --prompt "$prompt" \
     --lora_weights_dir "./lora/lora-adapters-forth-train/checkpoint-30000" \
     --num_images 2 \
-    --height 256 \
-    --width 256
+    --height 512 \
+    --width 512
   echo
 done
 
