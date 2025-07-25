@@ -40,29 +40,30 @@ def test_model(dataloader, model, device, text_encoder, noise_scheduler, acceler
     unet.eval()
 
     loss_list = []
-    for i, batch in enumerate(dataloader):
-        pixel_values = batch["pixel_values"].to(device)
-        input_ids = batch["input_ids"].to(device)
+    with torch.no_grad():
+        for i, batch in enumerate(dataloader):
+            pixel_values = batch["pixel_values"].to(device)
+            input_ids = batch["input_ids"].to(device)
 
-        latents = vae.encode(pixel_values).latent_dist.sample() * 0.18215
-        noise = torch.randn_like(latents)
-        ts = torch.randint(
-            0,
-            noise_scheduler.config.num_train_timesteps,
-            (latents.shape[0],),
-            device=device,
-        )
-        noisy = noise_scheduler.add_noise(latents, noise, ts)
-        hidden = text_encoder(input_ids)[0]
-        pred = unet(noisy, ts, hidden).sample
-        loss = torch.nn.functional.mse_loss(pred, noise)
-        loss_list.append(loss.item())
+            latents = vae.encode(pixel_values).latent_dist.sample() * 0.18215
+            noise = torch.randn_like(latents)
+            ts = torch.randint(
+                0,
+                noise_scheduler.config.num_train_timesteps,
+                (latents.shape[0],),
+                device=device,
+            )
+            noisy = noise_scheduler.add_noise(latents, noise, ts).to(dtype=torch.float16)
+            hidden = text_encoder(input_ids)[0].to(dtype=torch.float16)
+            pred = unet(noisy, ts, hidden).sample
+            loss = torch.nn.functional.mse_loss(pred, noise)
+            loss_list.append(loss.item())
 
-        if accelerator.is_main_process and i % 20 == 0:
-            accelerator.print(f"Step {i}: Loss = {loss.item():.4f}")
-            PIL.Image.fromarray(
-                (pred[0].cpu().numpy() * 255).astype("uint8").transpose(1, 2, 0)
-            ).save(os.path.join(output_dir, f"test_output_{i}.png"))
+            if accelerator.is_main_process and i % 20 == 0:
+                accelerator.print(f"Step {i}: Loss = {loss.item():.4f}")
+                PIL.Image.fromarray(
+                    (pred[0].cpu().detach().numpy() * 255).astype("uint8").transpose(1, 2, 0)
+                ).save(os.path.join(output_dir, f"test_output_{i}.png"))
 
     return loss_list
             
