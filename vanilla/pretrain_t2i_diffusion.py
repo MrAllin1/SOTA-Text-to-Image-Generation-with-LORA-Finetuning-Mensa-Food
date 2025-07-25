@@ -144,7 +144,7 @@ def main():
 
     # 6) test pretrained model
     accelerator.print("[+] Testing pretrained model…")
-    losses = test_model(dataloader, (vae, unet), device, text_encoder, noise_scheduler)
+    losses = test_model(dataloader, (vae, unet), device, text_encoder, noise_scheduler, accelerator, args.output_dir)
     accelerator.print(f"[+] Pretrained model loss: {sum(losses)/len(losses):.4f}")
 
     # 7) Final save & push
