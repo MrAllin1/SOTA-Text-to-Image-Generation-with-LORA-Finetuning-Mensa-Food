@@ -113,11 +113,11 @@ def parse_args():
         help="Number of images to generate"
     )
     parser.add_argument(
-        "--height", type=int, default=256,
+        "--height", type=int, default=512,
         help="Image height"
     )
     parser.add_argument(
-        "--width", type=int, default=256,
+        "--width", type=int, default=512,
         help="Image width"
     )
     parser.add_argument(
@@ -133,7 +133,8 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     
-    prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_de.csv"))
+    # prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_de.csv"))
+    prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_en.csv"))
     device = accelerator.device
     print(f"[+] Running on {device}")
 
