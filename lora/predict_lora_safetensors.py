@@ -8,12 +8,11 @@ import glob
 import torch
 from diffusers import StableDiffusionPipeline
 from peft import PeftModel
-from safetensors.torch import load_file
 
 def run_lora_inference(args):
     prompt = args.prompt
     base_model_id = args.base_model_id
-    lora_weights_path = args.lora_weights_path
+    lora_weights_dir = args.lora_weights_dir
     num_images = args.num_images
     height = args.height
     width = args.width
@@ -45,19 +44,24 @@ def run_lora_inference(args):
     pipe = pipe.to(device)
 
     # 2) load and apply LoRA weights
-    print(f"[+] Loading LoRA weights from `{lora_weights_path}`…")
+    print(f"[+] Loading LoRA weights from `{lora_weights_dir}`…")
+    config_file = os.path.join(lora_weights_dir, "adapter_config.json")
+    model_file = os.path.join(lora_weights_dir, "adapter_model.safetensors")
     
-    if lora_weights_path.endswith('.safetensors'):
-        # Directly load safetensors file
+    if os.path.exists(config_file):
         try:
-            state_dict = load_file(lora_weights_path, device=device.type)
-            # pipe.unet.load_state_dict(state_dict, strict=False)
-            pipe.load_lora_weights(state_dict)
+            pipe.unet = PeftModel.from_pretrained(
+                pipe.unet,
+                lora_weights_dir,
+                torch_dtype=dtype,
+                weight_name=model_file
+            )
         except Exception as e:
             print("❌ Error loading safetensors file:", e)
             sys.exit(1)
+        if hasattr(pipe, 'get_list_adapters'):
+            print(f"LoRA adapters loaded: {pipe.get_list_adapters()}")
 
-    # optional: memory‐efficient attention (xformers) on CUDA
     if device.type == "cuda":
         try:
             pipe.enable_xformers_memory_efficient_attention()
@@ -91,7 +95,6 @@ def run_lora_inference(args):
     out_dir = os.path.join(root, f"prediction_{next_num}")
     os.makedirs(out_dir, exist_ok=True)
 
-    # save the prompt
     with open(os.path.join(out_dir, "prompt.txt"), "w") as f:
         f.write(prompt)
 
@@ -120,7 +123,7 @@ def parse_args():
         help="HuggingFace repo of the base Stable Diffusion model"
     )
     parser.add_argument(
-        "--lora_weights_path",
+        "--lora_weights_dir",
         type=str,
         required=True,
         help="Path to your LoRA weights file (.safetensors or .bin)"
