@@ -158,7 +158,8 @@ if __name__ == "__main__":
     args = parse_args()
 
     import pandas as pd
-    prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_de.csv"))
+    # prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_de.csv"))
+    prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_en.csv"))
 
     for i, prompt in enumerate(prompt_csv['description'].tolist()):
         args.prompt = prompt
