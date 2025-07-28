@@ -1,0 +1,2 @@
+Average score: 73.50
+Total processed: 10 images
