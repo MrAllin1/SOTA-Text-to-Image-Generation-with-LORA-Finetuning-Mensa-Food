@@ -195,7 +195,7 @@ def evaluate_fid_by_pairs(args):
             }
             
             # Save detailed results
-            result_file = os.path.join(output_dir, f"fid_results_output_{args.output_index}.txt")
+            result_file = os.path.join(output_dir, f"fid_lora_{args.output_index}.txt")
             with open(result_file, 'w') as f:
                 f.write(f"FID Score: {fid_value:.4f}\n")
                 f.write(f"Ground Truth Images: {len(gt_files)}\n")
