@@ -135,7 +135,7 @@ def score_traindataset(args):
 
 def score_testdataset(args):
     # Path to the test dataset directory
-    test_data_path = os.path.join(data_root, "eval", "lora-v3_output")
+    test_data_path = os.path.join(data_root, "eval", "lora-v4_output", "en")
     
     if not os.path.exists(test_data_path):
         print(f"Test data path not found: {test_data_path}")
