@@ -1,0 +1,62 @@
+[
+  {
+    "question_id": 0,
+    "folder": "prediction_1",
+    "prompt": "geschmortes Rindfleischstück und gebratenes Schweinefleisch und gemischter grüner Salat und Ungarisches Gulasch",
+    "answer": 0.2451171875
+  },
+  {
+    "question_id": 1,
+    "folder": "prediction_2",
+    "prompt": "Spiegelei und gebratenes Schweinefleisch und gebratene Schnitzel und Salat mit Maiskörnern geriebene Karotten geschnittene Paprika",
+    "answer": 0.242919921875
+  },
+  {
+    "question_id": 2,
+    "folder": "prediction_3",
+    "prompt": "Ungarisches Gulasch und lange Wurst und gemischter grüner Salat mit geschnittener Paprika Gurke und Hühnernudeln",
+    "answer": 0.311767578125
+  },
+  {
+    "question_id": 3,
+    "folder": "prediction_4",
+    "prompt": "gebratener Fisch und gebratenes Schweinefleisch und gemischter grüner Salat und Kartoffelsalat und Kung Pao Hühnchen",
+    "answer": 0.296630859375
+  },
+  {
+    "question_id": 4,
+    "folder": "prediction_5",
+    "prompt": "gebratene Garnelenkuchen und gebratener Kabeljau und Reisnudeln und grüner Salat",
+    "answer": 0.26123046875
+  },
+  {
+    "question_id": 5,
+    "folder": "prediction_6",
+    "prompt": "gegrillte Hühnerflügel und gebratenes Rindfleisch und kleine Wurst und Reis und grüner Salat",
+    "answer": 0.304443359375
+  },
+  {
+    "question_id": 6,
+    "folder": "prediction_7",
+    "prompt": "geschmortes Rindfleischstück und lange Wurst und Fleischbällchen und Salat mit Mais gekochtem Ei Brokkoli",
+    "answer": 0.280029296875
+  },
+  {
+    "question_id": 7,
+    "folder": "prediction_8",
+    "prompt": "gebratenes Hähnchenbein und Wurst und geschmortes Hühnerfleisch mit Pilzsauce und gemischter grüner Salat",
+    "answer": 0.299072265625
+  },
+  {
+    "question_id": 8,
+    "folder": "prediction_9",
+    "prompt": "geschmortes Hühnerfleisch und gemischter Salat mit Kopfsalat geriebene Karotten und gegrillter Kürbis mit Käse",
+    "answer": 0.304443359375
+  },
+  {
+    "question_id": 9,
+    "folder": "prediction_10",
+    "prompt": "gebratenes Hähnchenbein und lange Wurst und gemischter Salat mit Maiskörnern geschnittene Paprika Kopfsalat Tomatenscheiben",
+    "answer": 0.3125
+  }
+]

@@ -1,4 +1,4 @@
-FID Score: 246.7162
+FID Score: 173.1613
 Ground Truth Images: 10
 Generated Images: 10
 Output Index Used: 0
