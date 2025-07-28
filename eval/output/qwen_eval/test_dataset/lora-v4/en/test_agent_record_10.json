@@ -1,0 +1,72 @@
+[
+  {
+    "row_index": 0,
+    "folder": "prediction_1",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_1/output_0.png",
+    "prompt": "stewed beef piece and fried pork and mixed green salad and Hungarian Goulash",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 1,
+    "folder": "prediction_2",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_2/output_0.png",
+    "prompt": "fried egg and fried pork and fried Cutlets and salad with corn kernels shredded carrots sliced peppers",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 2,
+    "folder": "prediction_3",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_3/output_0.png",
+    "prompt": "Hungarian Goulash and long sausage and mixed green salad with sliced peppers sliced cucmber and chicken pasta",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 3,
+    "folder": "prediction_4",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_4/output_0.png",
+    "prompt": "fried fish and frid pork and mixed green salad and potato salad and Kun Pao chicken",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 4,
+    "folder": "prediction_5",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_5/output_0.png",
+    "prompt": "fried schrimp cake and fried cod and rice noodles and green salad",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 5,
+    "folder": "prediction_6",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_6/output_0.png",
+    "prompt": "grilled chicken wings and fried beef and small sausage and rice and green salad",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 6,
+    "folder": "prediction_7",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_7/output_0.png",
+    "prompt": "stewed beef piece and long sausage and meat balls and salad with corn sliced egg broccoli",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 7,
+    "folder": "prediction_8",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_8/output_0.png",
+    "prompt": "fried chicken leg and sausage and stewed chicken piece with mushroom sause and mixed green salad",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 8,
+    "folder": "prediction_9",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_9/output_0.png",
+    "prompt": "stewed chicken pieces and mixed salad with lettuce shredded carrots and grilled pumpkin with cheese",
+    "response": "response saved separately"
+  },
+  {
+    "row_index": 9,
+    "folder": "prediction_10",
+    "image_path": "/home/swy/U-Frei/SS25/DL_Lab25/proj_finetune/mensa_t2i/eval/../data/eval/lora-v4_output/en/prediction_10/output_0.png",
+    "prompt": "fried chicken leg and long sausage and mixed salad with corn kernels sliced peppers lettuce tomato slices",
+    "response": "response saved separately"
+  }
+]
