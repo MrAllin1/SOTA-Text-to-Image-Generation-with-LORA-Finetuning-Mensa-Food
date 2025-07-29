@@ -1,0 +1,34 @@
+cpu-bind=MASK - dlcgpu02, task  0  0 [885931]: mask 0x1e0000001e000 set
+/var/spool/slurm/job20878261/slurm_script: line 11: module: command not found
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/huggingface_hub/utils/_deprecation.py:131: FutureWarning: 'Repository' (from 'huggingface_hub.repository') is deprecated and will be removed from version '1.0'. Please prefer the http-based alternatives instead. Given its large adoption in legacy code, the complete removal is only planned on next major release.
+For more details, please read https://huggingface.co/docs/huggingface_hub/concepts/git_vs_http.
+  warnings.warn(warning_message, FutureWarning)
+Traceback (most recent call last):
+  File "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/lora/train_text_to_image_lora.py", line 233, in <module>
+    main()
+  File "/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/lora/train_text_to_image_lora.py", line 228, in main
+    repo = Repository(args.output_dir, clone_from=args.hub_model_id)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/huggingface_hub/utils/_deprecation.py", line 132, in inner_f
+    return f(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/huggingface_hub/repository.py", line 534, in __init__
+    self.clone_from(repo_url=clone_from)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/huggingface_hub/repository.py", line 698, in clone_from
+    raise EnvironmentError(
+OSError: Tried to clone a repository in a non-empty folder that isn't a git repository ('/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/lora/./lora-adapters-second-train'). If you really want to do this, do it manually:
+ cd /work/dlclarge2/alidemaa-dl_lab/mensa_t2i/lora/./lora-adapters-second-train && git init && git remote add origin && git pull origin main
+ or clone repo to a new folder and move your existing files there afterwards.
+Traceback (most recent call last):
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1199, in launch_command
+    simple_launcher(args)
+  File "/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/lib/python3.10/site-packages/accelerate/commands/launch.py", line 785, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/work/dlclarge2/alidemaa-dl_lab/conda/miniconda3/envs/dllab/bin/python3.10', 'train_text_to_image_lora.py', '--pretrained_model_name_or_path=runwayml/stable-diffusion-v1-5', '--csv_file=/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/data/meals_raw_2025-07-09_2024-01-01.csv', '--resolution=512', '--train_batch_size=1', '--max_train_steps=30000', '--learning_rate=2e-4', '--rank=8', '--output_dir=./lora-adapters-second-train', '--push_to_hub', '--hub_model_id=username/my-lora-model-second-train', '--log_dir=/work/dlclarge2/alidemaa-dl_lab/mensa_t2i/logs']' returned non-zero exit status 1.
