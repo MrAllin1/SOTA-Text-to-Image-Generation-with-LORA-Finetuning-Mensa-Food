@@ -1,0 +1,3 @@
+score arithmetic mean: 0.309839
+score geometric mean: 0.308479
+total samples: 10

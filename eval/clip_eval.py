@@ -8,6 +8,7 @@ import clip
 import spacy
 import json
 import pandas as pd
+import math
 import sys
 import argparse
 from tqdm import tqdm
@@ -83,7 +84,7 @@ def get_similarity(args, prompt, image):
 
 def score_traindataset(args):
     try:
-        df = pd.read_csv(os.path.join(data_root, args.csv_path))
+        df = pd.read_csv(os.path.join(data_root, "eval", "gt_set", args.csv_path))
     except Exception as e:
         print(f"Error loading CSV file: {e}")
         sys.exit(1)
@@ -96,8 +97,8 @@ def score_traindataset(args):
     for i in tqdm(range(args.evallen), desc="CLIP sim processing"):
         row = df.iloc[i]
         prompt = row['description']
-        image_path = row['image_path']
-        image_path = os.path.join(data_root, image_path)
+        image_path = row['img_path']
+        image_path = os.path.join(data_root, "eval", "gt_set", image_path)
         if not os.path.exists(image_path):
             print(f"Image not found at: {image_path}")
             continue
@@ -112,6 +113,8 @@ def score_traindataset(args):
 
     #save
     output_dir = os.path.join(eval_root, args.outpath)
+    os.makedirs(output_dir, exist_ok=True)
+
     sim_dict = []
     for i in range(len(sim_list)):
         tmp = {}
@@ -119,23 +122,27 @@ def score_traindataset(args):
         tmp["answer"] = sim_list[i]
         sim_dict.append(tmp)
     json_file = json.dumps(sim_dict)
-    os.makedirs(output_dir, exist_ok=True)
     with open(f'{output_dir}/vqa_result_{args.evallen}.json', 'w') as f:
         f.write(json_file)
     print(f"save to {output_dir}/vqa_result_{args.evallen}.json")
 
     # score avg
-    score = 0
-    for i in range(len(sim_dict)):
-        score += float(sim_dict[i]['answer'])
+    arithmetic_mean = sum(sim_list) / len(sim_list)
+    # geometric mean with smoothed
+    epsilon = 1e-8
+    smoothed_scores = [max(score, epsilon) for score in sim_list]  # Ensure positive values
+    geometric_mean = math.exp(sum(math.log(score) for score in smoothed_scores) / len(smoothed_scores))
+    # save both metrics
     with open(f'{output_dir}/score_avg_{args.evallen}.txt', 'w') as f:
-        f.write('score avg: ' + str(score / len(sim_dict)))
-    print("score avg: ", score / len(sim_dict))
+        f.write(f'score arithmetic mean: {arithmetic_mean:.6f}\n')
+        f.write(f'score geometric mean: {geometric_mean:.6f}\n')
+        f.write(f'total samples: {len(sim_list)}\n')
 
 
 def score_testdataset(args):
     # Path to the test dataset directory
-    test_data_path = os.path.join(data_root, "eval", "lora-v4_output", "en")
+    test_data_path = os.path.join(data_root, "eval", "lora-v1_output")
+    # test_data_path = os.path.join(data_root, "eval", "lora-v4_output", "en")
     
     if not os.path.exists(test_data_path):
         print(f"Test data path not found: {test_data_path}")
@@ -217,13 +224,24 @@ def score_testdataset(args):
         f.write(json_file)
     print(f"Detailed results saved to {output_dir}/test_vqa_result_{len(sim_list)}.json")
     
-    # Calculate and save average score
+    # arithmetic average score
     score_avg = sum(sim_list) / len(sim_list)
-    with open(f'{output_dir}/test_score_avg_{len(sim_list)}.txt', 'w') as f:
-        f.write(f'test score avg: {score_avg}')
-    print(f"Test score average: {score_avg}")
     
-    return score_avg
+    # geometric mean with smoothed
+    epsilon = 1e-8
+    smoothed_scores = [max(score, epsilon) for score in sim_list]  # Ensure positive values
+    geometric_mean = math.exp(sum(math.log(score) for score in smoothed_scores) / len(smoothed_scores))
+    
+    # Save both metrics
+    with open(f'{output_dir}/test_score_avg_{len(sim_list)}.txt', 'w') as f:
+        f.write(f'test score arithmetic mean: {score_avg:.6f}\n')
+        f.write(f'test score geometric mean: {geometric_mean:.6f}\n')
+        f.write(f'total samples: {len(sim_list)}\n')
+
+    print(f"Test score arithmetic mean: {score_avg:.6f}")
+    print(f"Test score geometric mean: {geometric_mean:.6f}")
+    
+    return score_avg, geometric_mean
 
 
 if __name__ == "__main__":

@@ -1,1 +1,3 @@
-test score avg: 0.28057861328125
+test score arithmetic mean: 0.280579
+test score geometric mean: 0.278530
+total samples: 10

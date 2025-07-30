@@ -2,61 +2,61 @@
   {
     "question_id": 0,
     "folder": "prediction_1",
-    "prompt": "stewed beef piece and fried pork and mixed green salad and Hungarian Goulash",
-    "answer": 0.321044921875
+    "prompt": "Mensafood stewed beef piece and fried pork and mixed green salad and Hungarian Goulash",
+    "answer": 0.304443359375
   },
   {
     "question_id": 1,
     "folder": "prediction_2",
-    "prompt": "fried egg and fried pork and fried Cutlets and salad with corn kernels shredded carrots sliced peppers",
-    "answer": 0.291259765625
+    "prompt": "Mensafood fried egg and fried pork and fried Cutlets and salad with corn kernels shredded carrots sliced peppers",
+    "answer": 0.303466796875
   },
   {
     "question_id": 2,
     "folder": "prediction_3",
-    "prompt": "Hungarian Goulash and long sausage and mixed green salad with sliced peppers sliced cucmber and chicken pasta",
-    "answer": 0.30810546875
+    "prompt": "Mensafood Hungarian Goulash and long sausage and mixed green salad with sliced peppers sliced cucmber and chicken pasta",
+    "answer": 0.291259765625
   },
   {
     "question_id": 3,
     "folder": "prediction_4",
-    "prompt": "fried fish and frid pork and mixed green salad and potato salad and Kun Pao chicken",
-    "answer": 0.291015625
+    "prompt": "Mensafood fried fish and frid pork and mixed green salad and potato salad and Kun Pao chicken",
+    "answer": 0.294677734375
   },
   {
     "question_id": 4,
     "folder": "prediction_5",
-    "prompt": "fried schrimp cake and fried cod and rice noodles and green salad",
-    "answer": 0.333984375
+    "prompt": "Mensafood fried schrimp cake and fried cod and rice noodles and green salad",
+    "answer": 0.337890625
   },
   {
     "question_id": 5,
     "folder": "prediction_6",
-    "prompt": "grilled chicken wings and fried beef and small sausage and rice and green salad",
-    "answer": 0.2744140625
+    "prompt": "Mensafood grilled chicken wings and fried beef and small sausage and rice and green salad",
+    "answer": 0.292724609375
   },
   {
     "question_id": 6,
     "folder": "prediction_7",
-    "prompt": "stewed beef piece and long sausage and meat balls and salad with corn sliced egg broccoli",
-    "answer": 0.307861328125
+    "prompt": "Mensafood stewed beef piece and long sausage and meat balls and salad with corn sliced egg broccoli",
+    "answer": 0.32666015625
   },
   {
     "question_id": 7,
     "folder": "prediction_8",
-    "prompt": "fried chicken leg and sausage and stewed chicken piece with mushroom sause and mixed green salad",
-    "answer": 0.26513671875
+    "prompt": "Mensafood fried chicken leg and sausage and stewed chicken piece with mushroom sause and mixed green salad",
+    "answer": 0.253173828125
   },
   {
     "question_id": 8,
     "folder": "prediction_9",
-    "prompt": "stewed chicken pieces and mixed salad with lettuce shredded carrots and grilled pumpkin with cheese",
-    "answer": 0.281982421875
+    "prompt": "Mensafood stewed chicken pieces and mixed salad with lettuce shredded carrots and grilled pumpkin with cheese",
+    "answer": 0.302490234375
   },
   {
     "question_id": 9,
     "folder": "prediction_10",
-    "prompt": "fried chicken leg and long sausage and mixed salad with corn kernels sliced peppers lettuce tomato slices",
-    "answer": 0.299560546875
+    "prompt": "Mensafood fried chicken leg and long sausage and mixed salad with corn kernels sliced peppers lettuce tomato slices",
+    "answer": 0.30224609375
   }
 ]

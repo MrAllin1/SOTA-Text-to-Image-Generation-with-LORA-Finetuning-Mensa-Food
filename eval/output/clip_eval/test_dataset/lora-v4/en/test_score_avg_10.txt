@@ -1,1 +1,1 @@
-test score avg: 0.2974365234375
+test score avg: 0.3009033203125
