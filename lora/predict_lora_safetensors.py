@@ -162,6 +162,8 @@ if __name__ == "__main__":
     prompt_csv = pd.read_csv(os.path.join(os.path.dirname(__file__), "../data/eval/gt_set/meals_eval_en.csv"))
 
     for i, prompt in enumerate(prompt_csv['description'].tolist()):
+        if 'forth' in args.lora_weights_dir: 
+            prompt = 'Mensafood ' + prompt
         args.prompt = prompt
         print(f"Running inference for prompt {i+1}/{len(prompt_csv)}: {prompt}")
         run_lora_inference(args)
