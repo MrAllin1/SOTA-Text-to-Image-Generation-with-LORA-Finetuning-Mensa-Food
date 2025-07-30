@@ -1,2 +1,6 @@
-Average score: 57.60
-Total processed: 10 images
+Arithmetic mean scores of 10 images: 27.33, 45.00, 78.00, 85.00, 1.00, 80.00, 72.33, 78.00, 40.00, 73.33
+Geometric mean scores of 10 images: 4.34, 41.41, 77.44, 85.00, 1.00, 79.98, 71.99, 77.44, 29.91, 72.86
+arithmetic_at_images & arithmetic_at_objects score: 58.00
+arithmetic_at_images & geometric_at_objects score: 54.14
+geometric_at_images & arithmetic_at_objects score: 40.12
+geometric_at_images & geometric_at_objects score: 32.07

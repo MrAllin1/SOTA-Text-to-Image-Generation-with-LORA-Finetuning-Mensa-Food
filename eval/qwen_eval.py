@@ -8,6 +8,7 @@ import os
 import spacy
 import json
 import time
+import math
 import sys
 from openai import OpenAI
 import pandas as pd
@@ -98,12 +99,12 @@ def call_bailian_api(args, base64_image, question_prompt):
 
 def evaluate_traindataset(args):
     try:
-        df = pd.read_csv(os.path.join(data_root, args.csv_path))
+        df = pd.read_csv(os.path.join(data_root, "eval", "gt_set", args.csv_path))
     except Exception as e:
         print(f"Error loading CSV file: {e}")
         sys.exit(1)
 
-    required_columns = ['description', 'image_path']
+    required_columns = ['description', 'img_path']
     for col in required_columns:
         if col not in df.columns:
             print(f"Error: CSV file is missing required column '{col}'")
@@ -122,14 +123,14 @@ def evaluate_traindataset(args):
     for i in tqdm(range(args.evallen), desc="Agent processing training dataset"):
         row = df.iloc[i]
         prompt_name = row['description']
-        image_path = row['image_path']
-        image_path = os.path.join(data_root, image_path)
+        image_path = row['img_path']
+        image_path = os.path.join(data_root, "eval", "gt_set", image_path)
         if not os.path.exists(image_path):
             print(f"Image not found at: {image_path}")
             continue
-        
-        average_score = process_single_image(args, prompt_name, image_path, i)
-        
+
+        arithmetic_mean_score, geometric_mean_score = process_single_image(args, prompt_name, image_path, i)
+
         # Save results
         agent_record.append({
             "row_index": i,
@@ -142,7 +143,8 @@ def evaluate_traindataset(args):
             "row_index": i,
             "image_path": image_path,
             "prompt": prompt_name,
-            "score": average_score
+            "arithmetic_mean_score": arithmetic_mean_score,
+            "geometric_mean_score": geometric_mean_score
         })
         
         # Save intermediate results
@@ -160,7 +162,8 @@ def evaluate_traindataset(args):
 
 def evaluate_testdataset(args):
     # Path to the test dataset directory
-    test_data_path = os.path.join(data_root, "eval", "lora-v4_output", "en")
+    test_data_path = os.path.join(data_root, "eval", "lora-v1_output")
+    # test_data_path = os.path.join(data_root, "eval", "lora-v3_output", "en")
     
     if not os.path.exists(test_data_path):
         print(f"Test data path not found: {test_data_path}")
@@ -202,9 +205,9 @@ def evaluate_testdataset(args):
         if not os.path.exists(image_path):
             print(f"Image file not found: {image_path}")
             continue
-        
-        average_score = process_single_image(args, prompt_name, image_path, i)
-        
+
+        arithmetic_mean_score, geometric_mean_score = process_single_image(args, prompt_name, image_path, i)
+
         # Save results
         agent_record.append({
             "row_index": i,
@@ -219,7 +222,8 @@ def evaluate_testdataset(args):
             "folder": subdir,
             "image_path": image_path,
             "prompt": prompt_name,
-            "score": average_score
+            "arithmetic_mean_score": arithmetic_mean_score,
+            "geometric_mean_score": geometric_mean_score
         })
         
         # Save intermediate results
@@ -355,7 +359,9 @@ def process_single_image(args, prompt_name, image_path, index):
         '\n'.join([question_for_agent[num_q]['text'] for num_q in range(num_np)])
     max_attempts = 3
     attempt_count = 0
-    average_score = 0
+    arithmetic_mean_score = 0
+    geo_epsilon = 1
+    geometric_mean_score = 0
     while attempt_count < max_attempts:
         try:
             response = call_bailian_api(args, base64_image, question_prompt)
@@ -370,15 +376,18 @@ def process_single_image(args, prompt_name, image_path, index):
             pattern = r'"score": (\d+),'
             score_strings = re.findall(pattern, content)
             scores = [int(score) for score in score_strings]
-            average_score = sum(scores) / len(scores) if len(scores) > 0 else 0
-            
+            arithmetic_mean_score = sum(scores) / len(scores) if len(scores) > 0 else 0
+
+            smoothed_scores = [max(score, geo_epsilon) for score in scores]  # Ensure positive values
+            geometric_mean_score = math.exp(sum(math.log(score) for score in smoothed_scores) / len(smoothed_scores))
+
             break
         except Exception as e:
             print(f"Error (attempt {attempt_count + 1}/{max_attempts}): {e}")
             attempt_count += 1
             time.sleep(10)
     
-    return average_score
+    return arithmetic_mean_score, geometric_mean_score
 
 
 def save_final_results(agent_result, output_dir, num_samples, is_test=False):
@@ -387,13 +396,27 @@ def save_final_results(agent_result, output_dir, num_samples, is_test=False):
     
     # Calculate and save average score
     if agent_result:
-        score_list = [result["score"] for result in agent_result if result["score"] >= 0]
-        if score_list:
-            avg_score = sum(score_list) / len(score_list)
-            print(f"\nProcessing complete. Average score: {avg_score:.2f}")
+        arith_means = [max(result["arithmetic_mean_score"], 1) for result in agent_result]
+        geo_means = [max(result["geometric_mean_score"], 1) for result in agent_result]
+        if arith_means and geo_means:
+            assert len(arith_means) == len(geo_means)
+            img_num = len(arith_means)
+            arith_scores = ", ".join([f"{score:.2f}" for score in arith_means])
+            geo_scores = ", ".join([f"{score:.2f}" for score in geo_means])
+
+            score_arith_image_arith_object = sum(arith_means) / img_num
+            score_arith_image_geo_object = sum(geo_means) / img_num
+            score_geo_image_arith_object = math.exp(sum(math.log(score) for score in arith_means) / img_num)
+            score_geo_image_geo_object = math.exp(sum(math.log(score) for score in geo_means) / img_num)
             with open(f"{output_dir}/{prefix}avg_score_{num_samples}.txt", "w") as f:
-                f.write(f"Average score: {avg_score:.2f}\n")
-                f.write(f"Total processed: {len(score_list)} images\n")
+                f.write(f"Arithmetic mean scores of {img_num} images: {arith_scores}\n")
+                f.write(f"Geometric mean scores of {img_num} images: {geo_scores}\n")
+                f.write(f"arithmetic_at_images & arithmetic_at_objects score: {score_arith_image_arith_object:.2f}\n")
+                f.write(f"arithmetic_at_images & geometric_at_objects score: {score_arith_image_geo_object:.2f}\n")
+                f.write(f"geometric_at_images & arithmetic_at_objects score: {score_geo_image_arith_object:.2f}\n")
+                f.write(f"geometric_at_images & geometric_at_objects score: {score_geo_image_geo_object:.2f}\n")
+            print(f"Average scores saved to {output_dir}/{prefix}avg_score_{num_samples}.txt")
+
         else:
             print("\nProcessing complete. No valid scores were obtained.")
 
