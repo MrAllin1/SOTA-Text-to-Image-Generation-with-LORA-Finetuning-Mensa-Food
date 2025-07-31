@@ -42,14 +42,23 @@ def main():
 
     # 5) Prompts (German & English)
     prompts = [
-        "Mensafood Chickpea polenta with ratatouille; sheep’s cheese with mint",
-        "Mensafood Tortellini filled with ricotta and spinach in basil cheese sauce; spring onions; diced tomatoes; grated Emmental",
-        "Mensafood Pasta with tomatoes on top",
-        "Mensafood Curry sausage or Planted™ curry sausage; French fries",
-        "Mensafood Tortellini gefullt mit Ricotta und Spinat Basilikum-Kasesauce Fruhlingszwiebel Tomatenwurfel und geriebener Emmentaler",
-        "Mensafood Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel",
-        "Mensafood Currywurst oder planted Currywurst Pommes frites",
-        "Mensafood Kichererbsenpolenta mit Ratatouille; Schafskäse mit Minze",
+        # "Mensafood Chickpea polenta with ratatouille; sheep’s cheese with mint",
+        # "Mensafood Tortellini filled with ricotta and spinach in basil cheese sauce; spring onions; diced tomatoes; grated Emmental",
+        # "Mensafood Pasta with tomatoes on top",
+        # "Mensafood Curry sausage or Planted™ curry sausage; French fries",
+        # "Mensafood Tortellini gefullt mit Ricotta und Spinat Basilikum-Kasesauce Fruhlingszwiebel Tomatenwurfel und geriebener Emmentaler",
+        # "Mensafood Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel",
+        # "Mensafood Currywurst oder planted Currywurst Pommes frites",
+        # "Mensafood Kichererbsenpolenta mit Ratatouille; Schafskäse mit Minze",
+        # "Mensafood Stuffed peppers; baked potato and sweet‑potato wedges; Spanish beans",
+        # "Mensafood Zucchini‑ricotta balls; red pepper ragout; pasta risotto",
+        # "Mensafood Vegetable gnocchi pan with pink sauce; sheep’s cheese topping",
+        # "Mensafood Falafel quinoa bowl with organic hummus, mojo dip, baked sweet potatoes, cauliflower salad, soy beans and cranberry red‑cabbage salad",
+        # "Mensafood Chicken burger; avocado dip; rissolé potatoes",
+        # "Mensafood Breaded pork schnitzel or vegetable schnitzel; roast gravy; French fries",
+        # "Mensafood Mediterranean pasta salad with mozzarella, olives, sun‑dried tomatoes and basil; leafy salad; baguette",
+        "Mensafood Roasted chicken leg; herb yoghurt dip; French fries",
+
     ]
 
     # 6) Generate & save
