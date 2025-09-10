@@ -9,7 +9,7 @@ Instead of showing only a text menu, the model creates images of the exact dishe
 
 ---
 
-## 🚀 Training
+## Training
 To start a training job on the cluster:  
 
 ```bash
@@ -25,7 +25,7 @@ sacct -j <JOB_ID> --format=JobID,State,Elapsed,MaxRSS
 
 ---
 
-## 🔮 Prediction
+## Prediction
 Generate images from a prompt using a trained LoRA adapter:  
 
 ```bash
@@ -35,7 +35,7 @@ python predict_lora.py   --prompt "Mensafood Breaded pork schnitzel or vegetable
 
 ---
 
-## 📏 Evaluation
+## Evaluation
 We use both quantitative metrics and simple NLP checks to evaluate outputs.  
 
 ### LLM-based Evaluation
@@ -51,7 +51,7 @@ Run evaluation scripts with:
 
 ---
 
-## 📊 Example Results
+## Example Results
 
 You can check some results in the research poster below.
 
