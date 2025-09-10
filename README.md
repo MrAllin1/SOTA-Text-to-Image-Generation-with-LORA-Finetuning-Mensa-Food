@@ -3,7 +3,7 @@
 
 ---
 
-## 📖 Overview
+## Overview
 This project fine-tunes **Stable Diffusion** with **LoRA adapters** and a custom `MensaFood` token to generate photorealistic previews of meals served in the University of Freiburg mensa.  
 Instead of showing only a text menu, the model creates images of the exact dishes you’ll find in the cafeteria.  
 
